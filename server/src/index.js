@@ -10,15 +10,10 @@ import browseRoutes from './routes/browse.js';
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const allowedOrigins = [
-  'http://localhost:5173',
-  'https://moobe-movie-library.vercel.app',
-];
-
 app.use(cors({
   origin: (origin, callback) => {
     // Allow requests with no origin (e.g. curl, Render health-checks)
-    if (!origin || allowedOrigins.includes(origin)) {
+    if (!origin || origin.endsWith('.vercel.app') || origin === 'http://localhost:5173') {
       callback(null, true);
     } else {
       callback(new Error(`CORS: origin '${origin}' not allowed`));
