@@ -1,4 +1,4 @@
-const BASE = 'http://localhost:3001';
+const BASE = 'https://moobe-server.onrender.com';
 
 function authHeaders() {
   const token = localStorage.getItem('token');
